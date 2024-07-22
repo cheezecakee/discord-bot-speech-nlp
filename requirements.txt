@@ -1,2 +1,3 @@
-pocketsphinx
 SpeechRecognition
+pyaudio
+vosk

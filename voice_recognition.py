@@ -24,8 +24,11 @@ def recognize_speech_from_microphone():
     while True:
         data = sys.stdin.buffer.read(4096)
         if not data:
+            ("No data received.")
             break
-        stream.write(data)
+
+        print(f"Received data: {len(data)} bytes")  # Log received data length
+
         if recognizer.AcceptWaveform(data):
             result = json.loads(recognizer.Result())
             print("Recognizer text:", result.get("text", ""))
