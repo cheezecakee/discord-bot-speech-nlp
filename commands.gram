@@ -1,0 +1,7 @@
+#JSGF V1.0;
+grammar commands;
+
+public <command> = (play | stop | pause | skip | resume) (song | music | track) | play (song | track) <song_name>;
+
+<song_name> = (bohemian rhapsody | hotel california | stairway to heaven);
+
