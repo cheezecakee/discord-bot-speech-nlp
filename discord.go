@@ -1,18 +1,14 @@
-package main
+package nlp
 
 import (
 	"fmt"
-	"io"
 
 	"github.com/bwmarrin/discordgo"
 )
 
-func HandleVoice(c chan *discordgo.Packet, stdin io.WriteCloser) error {
+func HandleVoice(c chan *discordgo.Packet, pipe chan []byte) error {
 	for p := range c {
-		_, err := stdin.Write(p.Opus)
-		if err != nil {
-			return fmt.Errorf("failed to send audio data: %v", err)
-		}
+		pipe <- p.Opus
 		fmt.Println("Audio data sent.")
 	}
 	return nil
